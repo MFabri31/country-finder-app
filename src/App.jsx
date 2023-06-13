@@ -1,11 +1,9 @@
-import { NavBar } from './components/NavBar'
-import { SearchForm } from './components/SearchForm/SearchForm'
+import { PublicRoutes } from './routes/Routes'
 
 function App() {
 	return (
 		<>
-			<NavBar />
-			<SearchForm />
+			<PublicRoutes />
 		</>
 	)
 }
