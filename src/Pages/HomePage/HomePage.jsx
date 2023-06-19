@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { SearchForm } from '../../components/SearchForm/SearchForm'
-import { useEffect } from 'react'
+
 import {
 	SimpleGrid,
 	Card,
@@ -9,32 +8,19 @@ import {
 	Heading,
 	Text,
 } from '@chakra-ui/react'
-
-const BASE_URL = 'https://restcountries.com/v3.1'
+import { useSearchForm } from '../../hooks/useSearchForm'
+import { useCountries } from '../../hooks/useCountries'
 
 export const HomePage = () => {
-	const [countries, setCountries] = useState([])
+	const { searchValue, getFormValue } = useSearchForm()
 
-	const getCountries = async () => {
-		try {
-			const response = await fetch(`${BASE_URL}/all`)
-			const countries = await response.json()
-			console.log(countries)
-			setCountries(countries)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	useEffect(() => {
-		getCountries()
-	}, [])
+	const { countries } = useCountries({ searchValue })
 
 	return (
 		<>
-			<SearchForm />
+			<SearchForm getFormValue={getFormValue} />
 			<SimpleGrid columns={{ md: '4' }} gap={10}>
-				{countries.map(country => (
+				{countries?.map(country => (
 					<Card
 						mb='1rem'
 						maxW='sm'
