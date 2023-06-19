@@ -10,15 +10,19 @@ import {
 } from '@chakra-ui/react'
 import { useSearchForm } from '../../hooks/useSearchForm'
 import { useCountries } from '../../hooks/useCountries'
+import { Loader } from '../../components/Loader/Loader'
 
 export const HomePage = () => {
 	const { searchValue, getFormValue } = useSearchForm()
 
-	const { countries } = useCountries({ searchValue })
+	const { countries, loading } = useCountries({ searchValue })
 
 	return (
 		<>
 			<SearchForm getFormValue={getFormValue} />
+
+			{loading && <Loader />}
+
 			<SimpleGrid columns={{ md: '4' }} gap={10}>
 				{countries?.map(country => (
 					<Card

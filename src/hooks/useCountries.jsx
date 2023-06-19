@@ -4,6 +4,7 @@ const BASE_URL = 'https://restcountries.com/v3.1'
 
 export const useCountries = ({ searchValue }) => {
 	const [countries, setCountries] = useState([])
+	const [loading, setLoading] = useState(null)
 
 	const getCountries = async () => {
 		try {
@@ -13,10 +14,11 @@ export const useCountries = ({ searchValue }) => {
 				endpoint = `${BASE_URL}/name/${searchValue}`
 			}
 
+			setLoading(true)
 			const response = await fetch(endpoint)
 			const countries = await response.json()
-			// console.log(countries)
 			setCountries(countries)
+			setLoading(false)
 		} catch (error) {
 			console.log(error)
 		}
@@ -28,5 +30,6 @@ export const useCountries = ({ searchValue }) => {
 
 	return {
 		countries,
+		loading,
 	}
 }
