@@ -11,7 +11,7 @@ export const useCountries = ({ searchValue }) => {
 			let endpoint = `${BASE_URL}/all`
 
 			if (searchValue) {
-				endpoint = `${BASE_URL}/name/${searchValue}`
+				endpoint = `${BASE_URL}/${searchValue}`
 			}
 
 			setLoading(true)

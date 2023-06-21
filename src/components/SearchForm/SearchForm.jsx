@@ -1,7 +1,7 @@
 import { Input, InputGroup, IconButton, Select, Stack } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
-export const SearchForm = ({ getFormValue }) => {
+export const SearchForm = ({ getFormValue, getSelectValue }) => {
 	return (
 		<form style={{ margin: '2rem 0' }}>
 			<Stack
@@ -30,7 +30,8 @@ export const SearchForm = ({ getFormValue }) => {
 				<Select
 					placeholder='Filter by Region'
 					fontWeight='semiBold'
-					width={{ md: '13rem' }}>
+					width={{ md: '13rem' }}
+					onChange={evt => getSelectValue(evt.target.value)}>
 					<option value='africa'>Africa</option>
 					<option value='america'>America</option>
 					<option value='asia'>Asia</option>

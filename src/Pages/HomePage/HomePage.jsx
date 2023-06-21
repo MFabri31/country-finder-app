@@ -14,13 +14,13 @@ import { Loader } from '../../components/Loader/Loader'
 import { Link } from 'react-router-dom'
 
 export const HomePage = () => {
-	const { searchValue, getFormValue } = useSearchForm()
+	const { searchValue, getFormValue, getSelectValue } = useSearchForm()
 
 	const { countries, loading } = useCountries({ searchValue })
 
 	return (
 		<>
-			<SearchForm getFormValue={getFormValue} />
+			<SearchForm getFormValue={getFormValue} getSelectValue={getSelectValue} />
 
 			{loading && <Loader />}
 
