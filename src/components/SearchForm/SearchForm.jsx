@@ -1,10 +1,7 @@
 import { Input, InputGroup, IconButton, Select, Stack } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
-import { useSearchForm } from '../../hooks/useSearchForm'
 
-export const SearchForm = () => {
-	const { getFormValue } = useSearchForm()
-
+export const SearchForm = ({ getFormValue }) => {
 	return (
 		<form style={{ margin: '2rem 0' }}>
 			<Stack
