@@ -1,6 +1,6 @@
-import { Box, Heading, Button } from '@chakra-ui/react'
+import { Box, Heading } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { ArrowBackIcon } from '@chakra-ui/icons'
+import { MyButton } from '../../components/Button/Button'
 
 export const ErrorPage = () => {
 	return (
@@ -12,10 +12,7 @@ export const ErrorPage = () => {
 				Page not found
 			</Heading>
 			<Link to='/'>
-				<Button my='2rem' px='2em' shadow='md' bg='white'>
-					<ArrowBackIcon marginRight='1em' />
-					Back
-				</Button>
+				<MyButton />
 			</Link>
 		</Box>
 	)
