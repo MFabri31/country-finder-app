@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
-import { getAllCountries, getCountryBySearch } from "../services/countries";
+import {
+  getAllCountries,
+  getCountriesByRegion,
+  getCountryBySearch,
+} from "../services/countries";
 
-export const useCountries = () => {
+export const useCountries = ({ searchValue }) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(null);
 
@@ -27,9 +31,24 @@ export const useCountries = () => {
     }
   };
 
+  const filterCountriesByRegion = async () => {
+    try {
+      setLoading(true);
+      const countries = await getCountriesByRegion({ searchValue });
+      setCountries(countries);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCountries();
   }, []);
+
+  // useEffect(() => {
+  //   filterCountriesByRegion();
+  // }, []);
 
   return {
     countries,

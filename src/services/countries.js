@@ -31,3 +31,13 @@ export const getCountryByName = async ({ name }) => {
     console.log(error);
   }
 };
+
+export const getCountriesByRegion = async ({ searchValue }) => {
+  try {
+    const response = await fetch(`${BASE_URL}/region/${searchValue}`);
+    const country = await response.json();
+    return country;
+  } catch (error) {
+    console.log(error);
+  }
+};
