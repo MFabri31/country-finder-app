@@ -13,7 +13,7 @@ export const getAllCountries = async () => {
 
 export const getCountryBySearch = async ({ searchValue }) => {
   try {
-    const response = await fetch(`${BASE_URL}/${searchValue}`);
+    const response = await fetch(`${BASE_URL}/name/${searchValue}`);
     const country = await response.json();
 
     return country;
