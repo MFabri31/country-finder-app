@@ -5,14 +5,8 @@ export const useSearchForm = () => {
 
   const getFormValue = (evt) => setSearchValue(evt.target.value);
 
-  const getSelectValue = (optionValue) => {
-    if (optionValue === "") return;
-    setSearchValue(`region/${optionValue}`);
-  };
-
   return {
     searchValue,
     getFormValue,
-    getSelectValue,
   };
 };

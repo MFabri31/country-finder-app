@@ -22,6 +22,17 @@ export const getCountryBySearch = async ({ searchValue }) => {
   }
 };
 
+export const getCountriesByContinent = async ({ optionValue }) => {
+  try {
+    const response = await fetch(`${BASE_URL}/region/${optionValue}`);
+    const countries = await response.json();
+
+    return countries;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getCountryByName = async ({ name }) => {
   try {
     const response = await fetch(`${BASE_URL}/name/${name}`);

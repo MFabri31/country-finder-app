@@ -4,8 +4,8 @@ import { SearchIcon } from "@chakra-ui/icons";
 export const SearchForm = ({
   searchValue,
   getFormValue,
-  getSelectValue,
   getCountry,
+  filterCountriesByContinent,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +42,9 @@ export const SearchForm = ({
           placeholder="Filter by Region"
           fontWeight="semiBold"
           width={{ md: "13rem" }}
-          onChange={(evt) => getSelectValue(evt.target.value)}
+          onChange={(evt) =>
+            filterCountriesByContinent({ optionValue: evt.target.value })
+          }
         >
           <option value="africa">Africa</option>
           <option value="america">America</option>

@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { getAllCountries, getCountryBySearch } from "../services/countries";
+import {
+  getAllCountries,
+  getCountriesByContinent,
+  getCountryBySearch,
+} from "../services/countries";
 
 export const useCountries = () => {
   const [countries, setCountries] = useState([]);
@@ -27,6 +31,17 @@ export const useCountries = () => {
     }
   };
 
+  const filterCountriesByContinent = async ({ optionValue }) => {
+    try {
+      setLoading(true);
+      const countries = await getCountriesByContinent({ optionValue });
+      setCountries(countries);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCountries();
   }, []);
@@ -35,5 +50,6 @@ export const useCountries = () => {
     countries,
     loading,
     getCountry,
+    filterCountriesByContinent,
   };
 };

@@ -8,11 +8,12 @@ import { CountryCard } from "../../components/CountryCard/CountryCard";
 export const HomePage = () => {
   const { searchValue, getFormValue, getSelectValue } = useSearchForm();
 
-  const { countries, loading, getCountry } = useCountries();
+  const { countries, loading, getCountry, filterCountriesByContinent } =
+    useCountries();
 
-  const countryList = countries?.map((country) => (
-    <CountryCard key={country.id} {...country} />
-  ));
+  const countryList =
+    countries?.length > 0 &&
+    countries.map((country) => <CountryCard key={country.id} {...country} />);
   return (
     <>
       <SearchForm
@@ -20,6 +21,7 @@ export const HomePage = () => {
         getFormValue={getFormValue}
         getSelectValue={getSelectValue}
         getCountry={getCountry}
+        filterCountriesByContinent={filterCountriesByContinent}
       />
 
       {loading && <Loader />}
