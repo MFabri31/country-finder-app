@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  getAllCountries,
+  getInitialCountries,
   getCountriesByContinent,
   getCountryBySearch,
 } from "../services/countries";
@@ -12,7 +12,7 @@ export const useCountries = () => {
   const getCountries = async () => {
     try {
       setLoading(true);
-      const countries = await getAllCountries();
+      const countries = await getInitialCountries();
       setCountries(countries);
       setLoading(false);
     } catch (error) {

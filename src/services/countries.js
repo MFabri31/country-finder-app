@@ -1,10 +1,9 @@
 const BASE_URL = "https://restcountries.com/v3.1";
 
-export const getAllCountries = async () => {
+export const getInitialCountries = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/all`);
+    const response = await fetch(`${BASE_URL}/region/america`);
     const countries = await response.json();
-
     return countries;
   } catch (error) {
     console.log(error);
