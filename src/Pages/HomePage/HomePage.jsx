@@ -26,7 +26,7 @@ export const HomePage = () => {
 
       {loading && <Loader />}
 
-      <SimpleGrid columns={{ md: "4" }} gap={10}>
+      <SimpleGrid columns={{ base: 1, md: 3, lg: 3, xl: 4 }} gap={10}>
         {countryList}
       </SimpleGrid>
     </>

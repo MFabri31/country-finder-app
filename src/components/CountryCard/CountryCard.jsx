@@ -6,7 +6,7 @@ export const CountryCard = ({ name, flags, population, region, capital }) => {
     <Link to={`country/${name.common}`}>
       <Card
         mb="1rem"
-        w="18rem"
+        w={{ base: "100%", md: "18rem" }}
         shadow="md"
         borderRadius="8px"
         overflow="hidden"
